@@ -1,5 +1,5 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/marketi4/public_html/logosbibleuniversity.com/
+    - export DEPLOYPATH=/home/favoure1/logosinternational.favouredwarriors.com/
     - /bin/cp -R * $DEPLOYPATH
