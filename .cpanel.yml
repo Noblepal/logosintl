@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/marketi4/public_html/logosbibleuniversity.com/
+    - /bin/cp -R * $DEPLOYPATH
