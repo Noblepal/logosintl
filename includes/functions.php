@@ -119,3 +119,9 @@ function __redirect($href, $identifier, $code, $message)
 {
     header('location: ' . $href . '?' . $identifier . '=' . $code . '&message=' . $message);
 }
+
+function escapeString($string)
+{
+    global $con;
+    return mysqli_real_escape_string($con, $string);
+}
