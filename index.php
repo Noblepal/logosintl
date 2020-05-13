@@ -137,14 +137,14 @@ include './includes/head.php';
               <img class="card-img-top rounded-0" src="images/logos_intl/theological_studies.svg" alt="course thumb">
               <div class="card-body">
                 <ul class="list-inline mb-2">
-                  <li class="list-inline-item"><i class="ti-calendar mr-1 text-color"></i><?php echo $course['duration'];?> Weeks</li>
-                  <li class="list-inline-item"><a class="text-color" href="#"><?php echo $course['title'];?></a></li>
+                  <li class="list-inline-item"><i class="ti-calendar mr-1 text-color"></i><?php echo $course['duration']; ?> Weeks</li>
+                  <li class="list-inline-item"><a class="text-color" href="#"><?php echo $course['title']; ?></a></li>
                 </ul>
                 <a href="#course-single.html">
-                  <h4 class="card-title"><?php echo $course['title'];?></h4>
+                  <h4 class="card-title"><?php echo $course['title']; ?></h4>
                 </a>
                 <p class="card-text mb-4">
-                  <?php echo $course['course_description'];?>
+                  <?php echo $course['course_description']; ?>
                 </p>
                 <a href="#course-single.html" class="btn btn-primary btn-sm">Apply now</a>
               </div>
@@ -295,121 +295,10 @@ include './includes/head.php';
             </div>
           </div>
         </div>
-        <!-- teacher -->
-        <!-- <div class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
-        <div class="card border-0 rounded-0 hover-shadow">
-          <img class="card-img-top rounded-0" src="images/teachers/teacher-2.jpg" alt="teacher">
-          <div class="card-body">
-            <a href="teacher-single.html">
-              <h4 class="card-title">Clark Malik</h4>
-            </a>
-            <p>Teacher</p>
-            <ul class="list-inline">
-              <li class="list-inline-item"><a class="text-color" href="#"><i class="ti-facebook"></i></a></li>
-              <li class="list-inline-item"><a class="text-color" href="#"><i class="ti-twitter-alt"></i></a></li>
-              <li class="list-inline-item"><a class="text-color" href="#"><i class="ti-google"></i></a></li>
-              <li class="list-inline-item"><a class="text-color" href="#"><i class="ti-linkedin"></i></a></li>
-            </ul>
-          </div>
-        </div>
-      </div> -->
-        <!-- teacher -->
-        <!-- <div class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
-        <div class="card border-0 rounded-0 hover-shadow">
-          <img class="card-img-top rounded-0" src="images/teachers/teacher-3.jpg" alt="teacher">
-          <div class="card-body">
-            <a href="teacher-single.html">
-              <h4 class="card-title">John Doe</h4>
-            </a>
-            <p>Teacher</p>
-            <ul class="list-inline">
-              <li class="list-inline-item"><a class="text-color" href="#"><i class="ti-facebook"></i></a></li>
-              <li class="list-inline-item"><a class="text-color" href="#"><i class="ti-twitter-alt"></i></a></li>
-              <li class="list-inline-item"><a class="text-color" href="#"><i class="ti-google"></i></a></li>
-              <li class="list-inline-item"><a class="text-color" href="#"><i class="ti-linkedin"></i></a></li>
-            </ul>
-          </div>
-        </div>
       </div>
     </div>
-  </div> -->
+
   </section>
-  <!-- /teachers -->
-
-  <!-- blog -->
-  <!-- <section class="section pt-0">
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <h2 class="section-title">Latest News</h2>
-      </div>
-    </div>
-    <div class="row justify-content-center">
-  <!-- blog post
-  <article class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
-    <div class="card rounded-0 border-bottom border-primary border-top-0 border-left-0 border-right-0 hover-shadow">
-      <img class="card-img-top rounded-0" src="images/blog/post-1.jpg" alt="Post thumb">
-      <div class="card-body">
-        <!-- post meta
-        <ul class="list-inline mb-3">
-          <!-- post date
-          <li class="list-inline-item mr-3 ml-0">August 28, 2019</li>
-          <!-- author
-          <li class="list-inline-item mr-3 ml-0">By Jonathon</li>
-        </ul>
-        <a href="blog-single.html">
-          <h4 class="card-title">The Expenses You Are Thinking.</h4>
-        </a>
-        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicin</p>
-        <a href="blog-single.html" class="btn btn-primary btn-sm">read more</a>
-      </div>
-    </div>
-  </article>
-  <!-- blog post
-  <article class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
-    <div class="card rounded-0 border-bottom border-primary border-top-0 border-left-0 border-right-0 hover-shadow">
-      <img class="card-img-top rounded-0" src="images/blog/post-2.jpg" alt="Post thumb">
-      <div class="card-body">
-        <!-- post meta
-        <ul class="list-inline mb-3">
-          <!-- post date
-          <li class="list-inline-item mr-3 ml-0">August 13, 2019</li>
-          <!-- author
-          <li class="list-inline-item mr-3 ml-0">By Jonathon Drew</li>
-        </ul>
-        <a href="blog-single.html">
-          <h4 class="card-title">Tips to Succeed in an Online Course</h4>
-        </a>
-        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicin</p>
-        <a href="blog-single.html" class="btn btn-primary btn-sm">read more</a>
-      </div>
-    </div>
-  </article>
-  <!-- blog post
-  <article class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
-    <div class="card rounded-0 border-bottom border-primary border-top-0 border-left-0 border-right-0 hover-shadow">
-      <img class="card-img-top rounded-0" src="images/blog/post-3.jpg" alt="Post thumb">
-      <div class="card-body">
-        <!-- post meta
-        <ul class="list-inline mb-3">
-          <!-- post date
-          <li class="list-inline-item mr-3 ml-0">August 24, 2018</li>
-          <!-- author
-          <li class="list-inline-item mr-3 ml-0">By Alex Pitt</li>
-        </ul>
-        <a href="blog-single.html">
-          <h4 class="card-title">Orientation Program for the new students</h4>
-        </a>
-        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicin</p>
-        <a href="blog-single.html" class="btn btn-primary btn-sm">read more</a>
-      </div>
-    </div>
-  </article>
-</div>
-  </div>
-</section> -->
-  <!-- /blog -->
-
 
   <?php include './includes/modals.php'; ?>
 
