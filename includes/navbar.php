@@ -39,6 +39,11 @@
                                  <span aria-hidden="true">&times;</span>
                              </button>
                          </div>
+                         <script>
+                             setTimeout(function() {
+                                 window.location.replace("index.php?login=1&message=Login successful");
+                             }, 2000);
+                         </script>
                      <?php
                         } else if ($code == 0) {
                         ?>
@@ -48,9 +53,23 @@
                                  <span aria-hidden="true">&times;</span>
                              </button>
                          </div>
+                     <?php
+                        }
+                    } else if (isset($_GET['logout'])) {
+                        $code = $_GET['logout'];
+                        $message = $_GET['message'];
+                        if ($code == 1) {
+                        ?>
+                         <div class="alert col-md-6 alert-info alert-dismissible fade show" role="alert">
+                             <strong><?php echo $message; ?></strong>
+                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                 <span aria-hidden="true">&times;</span>
+                             </button>
+                         </div>
                  <?php
                         }
                     }
+
                     ?>
 
              </div>
@@ -98,12 +117,40 @@
                          <li class="nav-item @@contact">
                              <a class="nav-link" href="#contact.html">CONTACT</a>
                          </li>
-                         <li class="nav-item">
-                             <a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">login</a>
-                         </li>
-                         <li class="nav-item">
-                             <a class="nav-link" href="#" data-toggle="modal" data-target="#signupModal">register</a>
-                         </li>
+                         <?php
+                            if (isset($_SESSION['logged_in'])) {
+                                $isLoggedIn = $_SESSION['logged_in'];
+                                if ($isLoggedIn) {
+                            ?>
+                                 <li class="nav-item">
+                                     <a class="nav-link" href="#"><?php echo $_SESSION['name'] ?></a>
+                                 </li>
+                                 <li class="nav-item">
+                                     <a class="nav-link" href="logout.php">Logout</a>
+                                 </li>
+                             <?php
+                                } else {
+                                ?>
+                                 <li class="nav-item">
+                                     <a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">login</a>
+                                 </li>
+                                 <li class="nav-item">
+                                     <a class="nav-link" href="#" data-toggle="modal" data-target="#signupModal">register</a>
+                                 </li>
+                             <?php
+                                }
+                            } else {
+                                ?>
+                             <li class="nav-item">
+                                 <a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">login</a>
+                             </li>
+                             <li class="nav-item">
+                                 <a class="nav-link" href="#" data-toggle="modal" data-target="#signupModal">register</a>
+                             </li>
+                         <?php
+                            }
+                            ?>
+
                          <!-- <li class="nav-item @@events">
                             <a class="nav-link" href="#events.html">EVENTS</a>
                         </li>

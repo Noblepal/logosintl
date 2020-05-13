@@ -2,7 +2,8 @@
 
 session_start();
 
-$con = mysqli_connect('localhost', 'favoure1_favoure1', '6Ktx$hw41L*k', 'favoure1_logosintl');
+//$con = mysqli_connect('localhost', 'favoure1_favoure1', '6Ktx$hw41L*k', 'favoure1_logosintl');
+$con = mysqli_connect('localhost', 'root', '', 'logosintl');
 
 if (isset($_POST['loginUser'])) {
     loginUser($_POST);
@@ -16,7 +17,7 @@ function loginUser($post)
     extract($post);
 
     //Check if user already exists
-    $stmt = $con->prepare("SELECT name, phone, email, password FROM students WHERE email = ?");
+    $stmt = $con->prepare("SELECT username, phone, email, password FROM users WHERE email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $stmt->store_result();
@@ -28,7 +29,7 @@ function loginUser($post)
             $_SESSION['name'] = $mName;
             $_SESSION['phone'] = $mPhone;
             $_SESSION['email'] = $mEmail;
-            $_SESSION['logged_in'] = true;
+            $_SESSION['logged_in'] = false;
             __redirect("index.php", "login", 1, "Login successful");
         } else {
             __redirect("index.php", "login", 0, "Incorrect password");
@@ -44,7 +45,7 @@ function registerUser($post)
     extract($post);
 
     //Check if email already exists
-    $stmt = $con->prepare("SELECT email FROM students WHERE email = ?");
+    $stmt = $con->prepare("SELECT email FROM users WHERE email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $stmt->store_result();
@@ -54,12 +55,17 @@ function registerUser($post)
         closeSTMT($stmt);
         $password = password_hash($password, PASSWORD_DEFAULT);
 
-        $stmt = $con->prepare("INSERT INTO students (name, email, phone, password) VALUES (?,?,?,?)");
-        $stmt->bind_param("ssss", $name, $email, $phone, $password);
+        $stmt = $con->prepare("INSERT INTO users (username, email, phone, gender, status, password) VALUES (?,?,?,?,'pending',?)");
+        $stmt->bind_param("sssss", $name, $email, $phone, $gender, $password);
         $stmt->execute();
         $stmt->store_result();
         if ($stmt->affected_rows > 0) {
-            __redirect("index.php", "register", 1, "Registration successful");
+            //loginUser($post);
+            $_SESSION['name'] = $name;
+            $_SESSION['phone'] = $phone;
+            $_SESSION['email'] = $email;
+            $_SESSION['logged_in'] = true;
+            __redirect("index.php", "register", 1, "Registration successful. Logging you in...");
         } else {
             __redirect("index.php", "register", 0, "Failed to register, reason: " . $stmt->error);
         }
@@ -67,6 +73,15 @@ function registerUser($post)
     closeSTMT($stmt);
 }
 
+function getTopCourses()
+{
+    global $con;
+    $popular = "yes";
+    $stmt = $con->prepare("SELECT * FROM courses WHERE popular = ? LIMIT 8");
+    $stmt->bind_param("s", $popular);
+    $stmt->execute();
+    return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+}
 
 function closeSTMT($stmt)
 {

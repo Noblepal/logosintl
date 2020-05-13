@@ -117,10 +117,10 @@ include './includes/head.php';
       <div class="row">
         <div class="col-12">
           <div class="d-flex align-items-center section-title justify-content-between">
-            <h2 class="mb-0 text-nowrap mr-3">Our Courses</h2>
+            <h2 class="mb-0 text-nowrap mr-3">Our Top Courses</h2>
             <div class="border-top w-100 border-primary d-none d-sm-block"></div>
             <div>
-              <a href="#courses.html" class="btn btn-sm btn-primary-outline ml-sm-3 d-none d-sm-block">see all</a>
+              <a href="courses.php" class="btn btn-sm btn-primary-outline ml-sm-3 d-none d-sm-block">see all</a>
             </div>
           </div>
         </div>
@@ -128,126 +128,33 @@ include './includes/head.php';
       <!-- course list -->
       <div class="row justify-content-center">
         <!-- course item -->
-        <div class="col-lg-4 col-sm-6 mb-5">
-          <div class="card p-0 border-primary rounded-0 hover-shadow">
-            <img class="card-img-top rounded-0" src="images/logos_intl/theological_studies.svg" alt="course thumb">
-            <div class="card-body">
-              <ul class="list-inline mb-2">
-                <li class="list-inline-item"><i class="ti-calendar mr-1 text-color"></i>date</li>
-                <li class="list-inline-item"><a class="text-color" href="#">Theology</a></li>
-              </ul>
-              <a href="#course-single.html">
-                <h4 class="card-title">Theological Studies</h4>
-              </a>
-              <p class="card-text mb-4">
-                <ul>
-                  <li>Diploma in Theology</li>
-                  <li>Bachelor of Theology</li>
-                  <li>Master of Theology</li>
-                  <li>Doctor of Theology</li>
+        <?php
+        $courses = getTopCourses();
+        foreach ($courses as $course) {
+        ?>
+          <div class="col-lg-4 col-sm-6 mb-5">
+            <div class="card p-0 border-primary rounded-0 hover-shadow">
+              <img class="card-img-top rounded-0" src="images/logos_intl/theological_studies.svg" alt="course thumb">
+              <div class="card-body">
+                <ul class="list-inline mb-2">
+                  <li class="list-inline-item"><i class="ti-calendar mr-1 text-color"></i><?php echo $course['duration'];?> Weeks</li>
+                  <li class="list-inline-item"><a class="text-color" href="#"><?php echo $course['title'];?></a></li>
                 </ul>
-              </p>
-              <a href="#course-single.html" class="btn btn-primary btn-sm">Apply now</a>
+                <a href="#course-single.html">
+                  <h4 class="card-title"><?php echo $course['title'];?></h4>
+                </a>
+                <p class="card-text mb-4">
+                  <?php echo $course['course_description'];?>
+                </p>
+                <a href="#course-single.html" class="btn btn-primary btn-sm">Apply now</a>
+              </div>
             </div>
           </div>
-        </div>
-        <!-- course item -->
-        <div class="col-lg-4 col-sm-6 mb-5">
-          <div class="card p-0 border-primary rounded-0 hover-shadow">
-            <img class="card-img-top rounded-0" src="images/logos_intl/ministry.svg" alt="course thumb">
-            <div class="card-body">
-              <ul class="list-inline mb-2">
-                <li class="list-inline-item"><i class="ti-calendar mr-1 text-color"></i>date</li>
-                <li class="list-inline-item"><a class="text-color" href="#">Ministry</a></li>
-              </ul>
-              <a href="#course-single.html">
-                <h4 class="card-title">Courses in Ministry</h4>
-              </a>
-              <p class="card-text mb-4">
-                <ul>
-                  <li>Diploma in Ministry</li>
-                  <li>Bachelor of Christian Ministry</li>
-                  <li>Master of Christian Ministry</li>
-                  <li>Doctor of Christian Ministry</li>
-                </ul>
-              </p>
-              <a href="#course-single.html" class="btn btn-primary btn-sm">Apply now</a>
-            </div>
-          </div>
-        </div>
-        <!-- course item -->
-        <div class="col-lg-4 col-sm-6 mb-5">
-          <div class="card p-0 border-primary rounded-0 hover-shadow">
-            <img class="card-img-top rounded-0" src="images/logos_intl/divinity.svg" alt="course thumb">
-            <div class="card-body">
-              <ul class="list-inline mb-2">
-                <li class="list-inline-item"><i class="ti-calendar mr-1 text-color"></i>date</li>
-                <li class="list-inline-item"><a class="text-color" href="#">Divinity</a></li>
-              </ul>
-              <a href="#course-single.html">
-                <h4 class="card-title">Courses in Divinity</h4>
-              </a>
-              <p class="card-text mb-4">
-                <ol>
-                  <li>Master of Divinity</li>
-                  <li>Doctor of Divinity</li>
-                </ol>
-              </p>
-              <a href="#course-single.html" class="btn btn-primary btn-sm">Apply now</a>
-            </div>
-          </div>
-        </div>
-        <!-- course item -->
-        <div class="col-lg-4 col-sm-6 mb-5">
-          <div class="card p-0 border-primary rounded-0 hover-shadow">
-            <img class="card-img-top rounded-0" src="images/logos_intl/hebrew.svg" alt="course thumb">
-            <div class="card-body">
-              <ul class="list-inline mb-2">
-                <li class="list-inline-item"><i class="ti-calendar mr-1 text-color"></i>date</li>
-                <li class="list-inline-item"><a class="text-color" href="#">Hebrew</a></li>
-              </ul>
-              <a href="#course-single.html">
-                <h4 class="card-title">Hebrew Language Course</h4>
-              </a>
-              <p class="card-text mb-4">Full Hebrew Language Course </p>
-              <a href="#course-single.html" class="btn btn-primary btn-sm">Apply now</a>
-            </div>
-          </div>
-        </div>
-        <!-- course item -->
-        <div class="col-lg-4 col-sm-6 mb-5">
-          <div class="card p-0 border-primary rounded-0 hover-shadow">
-            <img class="card-img-top rounded-0" src="images/logos_intl/greek.svg" alt="course thumb">
-            <div class="card-body">
-              <ul class="list-inline mb-2">
-                <li class="list-inline-item"><i class="ti-calendar mr-1 text-color"></i>date</li>
-                <li class="list-inline-item"><a class="text-color" href="#">Greek</a></li>
-              </ul>
-              <a href="#course-single.html">
-                <h4 class="card-title">Greek</h4>
-              </a>
-              <p class="card-text mb-4"> Full Greek Language Course</p>
-              <a href="#course-single.html" class="btn btn-primary btn-sm">Apply now</a>
-            </div>
-          </div>
-        </div>
-        <!-- course item -->
-        <div class="col-lg-4 col-sm-6 mb-5">
-          <div class="card p-0 border-primary rounded-0 hover-shadow">
-            <img class="card-img-top rounded-0" src="images/logos_intl/counseling.svg" alt="course thumb">
-            <div class="card-body">
-              <ul class="list-inline mb-2">
-                <li class="list-inline-item"><i class="ti-calendar mr-1 text-color"></i>date</li>
-                <li class="list-inline-item"><a class="text-color" href="#">Psychology</a></li>
-              </ul>
-              <a href="#course-single.html">
-                <h4 class="card-title">Counseling and Psychology</h4>
-              </a>
-              <p class="card-text mb-4">Full Course on Counseling and Psychology</p>
-              <a href="#course-single.html" class="btn btn-primary btn-sm">Apply now</a>
-            </div>
-          </div>
-        </div>
+        <?php
+        }
+        ?>
+
+
       </div>
       <!-- /course list -->
       <!-- mobile see all button -->
@@ -267,7 +174,7 @@ include './includes/head.php';
         <div class="col-12 text-center">
           <h2 class="text-white font-secondary mb-0">Click to Join the Advance Workshop</h2>
           <h6 class="section-title text-white">Let us seek God with all our hearts and with Knowledge and understanding Join our College for more Shalom</h6>
-          <a href="#"  data-toggle="modal" data-target="#signupModal" class="btn btn-secondary">join now</a>
+          <a href="#" data-toggle="modal" data-target="#signupModal" class="btn btn-secondary">join now</a>
         </div>
       </div>
     </div>
