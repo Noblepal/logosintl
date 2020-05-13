@@ -15,7 +15,7 @@ include './includes/head.php';
   <?php include './includes/navbar.php'; ?>
 
   <!-- page title -->
-  <section class="page-title-section overlay" data-background="images/backgrounds/page-title.jpg">
+  <section class="page-title-section overlay" data-background="images/logos_intl/logos_09.jpg">
     <div class="container">
       <div class="row">
         <div class="col-md-8">
