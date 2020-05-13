@@ -3,8 +3,8 @@
 session_start();
 
 // MySQL connection
-//$con = mysqli_connect('localhost', 'favoure1_favoure1', '6Ktx$hw41L*k', 'favoure1_logosintl');
-$con = mysqli_connect('localhost', 'root', '', 'logosintl');
+$con = mysqli_connect('localhost', 'favoure1_favoure1', '6Ktx$hw41L*k', 'favoure1_logosintl');
+//$con = mysqli_connect('localhost', 'root', '', 'logosintl');
 
 if(!isset($_SESSION['logged_in'])){
   ?>
