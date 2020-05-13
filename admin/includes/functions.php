@@ -116,6 +116,7 @@ function getTeachersForTableData()
   ?>
     <tr>
       <th scope="row"><?php echo $counter; ?></th>
+      <td><img widht="80" height="80" src=".<?php echo $teacher['image_url']; ?>" /> </td>
       <td><?php echo $teacher['name']; ?></td>
       <td><?php echo $teacher['email']; ?></td>
       <td><?php echo $teacher['phone']; ?></td>
