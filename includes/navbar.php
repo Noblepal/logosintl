@@ -122,6 +122,7 @@
                                 $isLoggedIn = $_SESSION['logged_in'];
                                 if ($isLoggedIn) {
                             ?>
+                            <!-- Added this comment -->
                                  <li class="nav-item">
                                      <a class="nav-link" href="#"><?php echo $_SESSION['name'] ?></a>
                                  </li>
