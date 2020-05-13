@@ -181,94 +181,6 @@ include './includes/head.php';
   </section>
   <!-- /cta -->
 
-  <!-- success story -->
-  <!-- <section class="section bg-cover" data-background="images/backgrounds/success-story.jpg">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-6 col-sm-4 position-relative success-video">
-        <a class="play-btn venobox" href="#youtube-video" data-vbtype="video">
-          <i class="ti-control-play"></i>
-        </a>
-      </div>
-      <div class="col-lg-6 col-sm-8">
-        <div class="bg-white p-5">
-          <h2 class="section-title">Success Stories</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section> -->
-  <!-- /success story -->
-
-  <!-- events -->
-  <!-- <section class="section bg-gray">
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <div class="d-flex align-items-center section-title justify-content-between">
-          <h2 class="mb-0 text-nowrap mr-3">Upcoming Events</h2>
-          <div class="border-top w-100 border-primary d-none d-sm-block"></div>
-          <div>
-            <a href="events.html" class="btn btn-sm btn-primary-outline ml-sm-3 d-none d-sm-block">see all</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row justify-content-center">
-  <!-- event
-  <div class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
-    <div class="card border-0 rounded-0 hover-shadow">
-      <div class="card-img position-relative">
-        <img class="card-img-top rounded-0" src="images/events/event-1.jpg" alt="event thumb">
-        <div class="card-date"><span>18</span><br>December</div>
-      </div>
-      <div class="card-body">
-        <!-- location
-        <p><i class="ti-location-pin text-primary mr-2"></i>Harvard, Usa</p>
-        <a href="event-single.html"><h4 class="card-title">Toward a public philosophy of justice</h4></a>
-      </div>
-    </div>
-  </div>
-  <!-- event
-  <div class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
-    <div class="card border-0 rounded-0 hover-shadow">
-      <div class="card-img position-relative">
-        <img class="card-img-top rounded-0" src="images/events/event-2.jpg" alt="event thumb">
-        <div class="card-date"><span>21</span><br>December</div>
-      </div>
-      <div class="card-body">
-        <!-- location
-        <p><i class="ti-location-pin text-primary mr-2"></i>Cambridge, USA</p>
-        <a href="event-single.html"><h4 class="card-title">Research seminar in clinical science.</h4></a>
-      </div>
-    </div>
-  </div>
-  <!-- event
-  <div class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
-    <div class="card border-0 rounded-0 hover-shadow">
-      <div class="card-img position-relative">
-        <img class="card-img-top rounded-0" src="images/events/event-3.jpg" alt="event thumb">
-        <div class="card-date"><span>23</span><br>December</div>
-      </div>
-      <div class="card-body">
-        <!-- location
-        <p><i class="ti-location-pin text-primary mr-2"></i>Dhanmondi Lake, Dhaka</p>
-        <a href="event-single.html"><h4 class="card-title">Firefly training in trauma-informed yoga</h4></a>
-      </div>
-    </div>
-  </div>
-</div>
-    <!-- mobile see all button
-    <div class="row">
-      <div class="col-12 text-center">
-        <a href="course.html" class="btn btn-sm btn-primary-outline d-sm-none d-inline-block">sell all</a>
-      </div>
-    </div>
-  </div>
-</section> -->
-  <!-- /events -->
 
   <!-- teachers -->
   <section class="section">
@@ -278,23 +190,32 @@ include './includes/head.php';
           <h2 class="section-title text-center">Our Teacher</h2>
         </div>
         <!-- teacher -->
-        <div class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
-          <div class="card border-0 rounded-0 hover-shadow">
-            <img class="card-img-top rounded-0" src="images/logos_intl/logos_04.jpg" alt="teacher">
-            <div class="card-body">
-              <a href="#teacher-single.html">
-                <h4 class="card-title">Dr. Anabel Anagard</h4>
-              </a>
-              <p>School Chancellor</p>
-              <ul class="list-inline">
-                <li class="list-inline-item"><a class="text-color" href="https://www.facebook.com/evangelistglee.anabel"><i class="ti-facebook"></i></a></li>
-                <li class="list-inline-item"><a class="text-color" href="#"><i class="ti-twitter-alt"></i></a></li>
-                <li class="list-inline-item"><a class="text-color" href="#"><i class="ti-google"></i></a></li>
-                <li class="list-inline-item"><a class="text-color" href="#"><i class="ti-linkedin"></i></a></li>
-              </ul>
+        <?php
+        $teachers = getAllTeachers();
+        foreach ($teachers as $teacher) {
+        ?>
+          <div class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
+            <div class="card border-0 rounded-0 hover-shadow">
+              <img class="card-img-top rounded-0" src="<?php echo $teacher['image_url']; ?>" alt="teacher">
+              <div class="card-body">
+                <a href="#teacher-single.html">
+                  <h4 class="card-title"><?php echo $teacher['name']; ?></h4>
+                </a>
+                <div class="d-flex justify-content-between">
+                  <span>Teacher</span>
+                  <ul class="list-inline">
+                    <li class="list-inline-item"><a class="text-color" href="#"><i class="ti-facebook"></i></a></li>
+                    <li class="list-inline-item"><a class="text-color" href="#"><i class="ti-twitter-alt"></i></a></li>
+                    <li class="list-inline-item"><a class="text-color" href="#"><i class="ti-google"></i></a></li>
+                    <li class="list-inline-item"><a class="text-color" href="#"><i class="ti-linkedin"></i></a></li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
+        <?php
+        }
+        ?>
       </div>
     </div>
 
