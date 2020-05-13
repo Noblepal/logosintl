@@ -1,6 +1,6 @@
 <div class="row mt-4">
   <div class="col-md-10">
-     <h1>Welcome, Admin</h1>
+    <h1>Welcome, <?php echo $_SESSION['name']; ?></h1>
   </div>
   <div class="col-md-2">
     <div class="dropdown">
