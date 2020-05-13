@@ -2,8 +2,8 @@
 
 session_start();
 
-$con = mysqli_connect('localhost', 'favoure1_favoure1', '6Ktx$hw41L*k', 'favoure1_logosintl');
-//$con = mysqli_connect('localhost', 'root', '', 'logosintl');
+//$con = mysqli_connect('localhost', 'favoure1_favoure1', '6Ktx$hw41L*k', 'favoure1_logosintl');
+$con = mysqli_connect('localhost', 'root', '', 'logosintl');
 
 if (isset($_POST['loginUser'])) {
     loginUser($_POST);
@@ -87,6 +87,14 @@ function getAllCourses()
 {
     global $con;
     $stmt = $con->prepare("SELECT * FROM courses");
+    $stmt->execute();
+    return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+}
+
+function getAllTeachers()
+{
+    global $con;
+    $stmt = $con->prepare("SELECT * FROM teachers");
     $stmt->execute();
     return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
 }

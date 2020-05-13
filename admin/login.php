@@ -20,9 +20,9 @@ function loginAdmin($post){
 
   if($stmt->num_rows > 0){
     if(password_verify($password, $hashed_password)){
-      $_SESSION['isAdmin']="true";
-      $_SESSION['logged_in']="true";
-      $_SESSION['username']=$username;
+      $_SESSION['isAdmin']= true;
+      $_SESSION['name']= $username;
+      $_SESSION['logged_in'] = true;
       $_SESSION['email']=$email;
       header('location: login.php?logged_in=1&message=Login successful. Redirecting...');
     } else {

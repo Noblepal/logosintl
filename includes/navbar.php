@@ -106,16 +106,16 @@
                  <div class="collapse navbar-collapse" id="navigation">
                      <ul class="navbar-nav ml-auto text-center">
                          <li class="nav-item active">
-                             <a class="nav-link" href="#index.html">Home</a>
+                             <a class="nav-link" href="index.php">Home</a>
                          </li>
                          <li class="nav-item @@about">
-                             <a class="nav-link" href="#about.html">About</a>
+                             <a class="nav-link" href="about.php">About</a>
                          </li>
                          <li class="nav-item @@courses">
-                             <a class="nav-link" href="#courses.html">Courses</a>
+                             <a class="nav-link" href="courses.php">Courses</a>
                          </li>
                          <li class="nav-item @@contact">
-                             <a class="nav-link" href="#contact.html">CONTACT</a>
+                             <a class="nav-link" href="contact.php">CONTACT</a>
                          </li>
                          <?php
                             if (isset($_SESSION['logged_in'])) {
