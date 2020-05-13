@@ -480,9 +480,9 @@ function updateCourse($post)
   $stmt->store_result();
 
   if ($stmt->affected_rows > 0) {
-    header("location: viewCourses.php?update=1&message=Id: " . $course_id . " course updated successfully");
+    header("location: viewCourses.php?success=1&message=Id: " . $course_id . " course updated successfully");
   } else {
-    header("location: viewCourses.php?update=0&message=Course not updated $stmt->error");
+    header("location: viewCourses.php?success=0&message=Course not updated $stmt->error");
   }
 
   $stmt->free_result();
@@ -499,9 +499,9 @@ function deleteCourse($post)
   $stmt->store_result();
 
   if ($stmt->affected_rows > 0) {
-    header("location: viewCourses.php?delete=1&message=Id: " . $course_id . " course deleted successfully");
+    header("location: viewCourses.php?success=1&message=Id: " . $course_id . " course deleted successfully");
   } else {
-    header("location: viewCourses.php?delete=0&message=$stmt->error");
+    header("location: viewCourses.php?success=0&message=$stmt->error");
   }
 
   $stmt->free_result();
@@ -518,9 +518,9 @@ function deleteTopic($post)
   $stmt->store_result();
 
   if ($stmt->affected_rows > 0) {
-    header("location: viewTopics.php?delete=1&message=Id: " . $course_id . " topic deleted successfully");
+    header("location: viewTopics.php?success=1&message=Id: " . $course_id . " topic deleted successfully");
   } else {
-    header("location: viewTopics.php?delete=0&message=$stmt->error");
+    header("location: viewTopics.php?success=0&message=$stmt->error");
   }
 
   $stmt->free_result();

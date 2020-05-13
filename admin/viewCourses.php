@@ -20,25 +20,10 @@ include("./includes/functions.php")
             <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
             <li class="breadcrumb-item active">View Courses</li>
           </ol>
-          <?php if (isset($_GET['delete'])) {
-            $s = $_GET['delete'];
+          <?php if (isset($_GET['success'])) {
+            $s = $_GET['success'];
             if ($s == 0) {
           ?>
-              <div class="alert alert-danger mt-3" role="alert">
-                <?php echo $_GET['message']; ?>
-              </div>
-            <?php
-            } else if ($s == 1) {
-            ?>
-              <div class="alert alert-success mt-3" role="alert">
-                <?php echo $_GET['message']; ?>
-              </div>
-            <?php
-            }
-          } else if (isset($_GET['update'])) {
-            $s = $_GET['update'];
-            if ($s == 0) {
-            ?>
               <div class="alert alert-danger mt-3" role="alert">
                 <?php echo $_GET['message']; ?>
               </div>

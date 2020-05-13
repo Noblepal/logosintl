@@ -47,7 +47,7 @@ function loginAdmin($post){
                         <div class="row justify-content-center">
                             <div class="col-lg-5">
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header d-flex justify-content-center"> <img src="../images/logoman.png" width="70" height="70" alt=""> <h3 class="text-center font-weight-light my-4">Administrator Login</h3></div>
+                                    <div class="card-header d-flex justify-content-center"> <img src="../images/logos_intl/logosintl.png" width="70" height="70" alt=""> <h3 class="text-center font-weight-light my-4">Administrator Login</h3></div>
                                     <div class="card-body">
                                       <?php
                                       if(isset($_GET['logged_in'])){
