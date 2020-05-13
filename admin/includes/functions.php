@@ -35,6 +35,12 @@ if (isset($_SERVER['REQUEST_METHOD']) == "POST") {
     deleteTopic($_POST);
   } else if (isset($_POST['createAdminUser'])) {
     createAdminUser($_POST);
+  } else if (isset($_POST['createStudent'])) {
+    createStudent($_POST);
+  } else if (isset($_POST['updateStudent'])) {
+    updateStudent($_POST);
+  } else if (isset($_POST['deleteStudent'])) {
+    deleteStudent($_POST);
   }
 } else {
 }
@@ -130,6 +136,39 @@ function getTeachersForTableData()
         <button class="btn btn-danger" data-toggle="modal" data-target="#deleteTeacherModal" onclick="
         document.getElementById('tname').innerHTML='<?php echo $teacher['name']; ?>';
         document.getElementById('teacher_id_delete').value='<?php echo $teacher['id']; ?>';">Delete</button>
+      </td>
+    </tr>
+  <?php
+    $counter++;
+  }
+}
+function getStudentsForTableData()
+{
+  global $con;
+  $stmt = $con->prepare("SELECT * FROM users ORDER BY created_at DESC");
+  $stmt->execute();
+  $row = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+  $stmt->free_result();
+  $stmt->close();
+  $counter = 1;
+  foreach ($row as $student) {
+  ?>
+    <tr>
+      <th scope="row"><?php echo $counter; ?></th>
+      <td><?php echo $student['username']; ?></td>
+      <td><?php echo $student['email']; ?></td>
+      <td><?php echo $student['phone']; ?></td>
+      <td><?php echo $student['created_at']; ?></td>
+      <td><?php echo $student['status']; ?></td>
+      <td>
+        <button class="btn btn-primary" data-toggle="modal" data-target="#editStudent" onclick="
+        document.getElementById('student_name').value='<?php echo $student['username']; ?>';
+        document.getElementById('student_id').value='<?php echo $student['id']; ?>';
+        document.getElementById('student_email').value='<?php echo $student['email']; ?>';
+        document.getElementById('student_phone').value='<?php echo $student['phone']; ?>';">Edit</button>
+        <button class="btn btn-danger" data-toggle="modal" data-target="#deleteStudentModal" onclick="
+        document.getElementById('sname').innerHTML='<?php echo $student['username']; ?>';
+        document.getElementById('student_id_delete').value='<?php echo $student['id']; ?>';">Delete</button>
       </td>
     </tr>
   <?php
@@ -298,6 +337,24 @@ function createTopic($post, $status)
   $stmt->close();
 }
 
+function createStudent($post)
+{
+  global $con;
+  extract($post);
+  $status = "Approved";
+  $stmt = $con->prepare("INSERT INTO users (username, phone, email, gender, password, status) VALUES(?,?,?,?,?,?)");
+  $stmt->bind_param("ssssss", $student_name, $student_phone, $student_email, $student_gender, $student_password, $status);
+  $stmt->execute();
+  $stmt->store_result();
+
+
+  if ($stmt->affected_rows > 0) {
+    header("location: addStudent.php?success=1&message=Student added successfully");
+  } else {
+    header("location: addStudent.php?success=0&message=$stmt->error");
+  }
+}
+
 function createTeacher($post)
 {
   global $con;
@@ -345,9 +402,29 @@ function deleteTeacher($post)
   $stmt->store_result();
 
   if ($stmt->affected_rows > 0) {
-    header("location: viewTeachers.php?delete=1&message=Id: " . $teacher_id . " teacher deleted successfully");
+    header("location: viewTeachers.php?success=1&message=Id: " . $teacher_id . " teacher deleted successfully");
   } else {
-    header("location: viewTeachers.php?delete=0&message=$stmt->error");
+    header("location: viewTeachers.php?success=0&message=$stmt->error");
+  }
+
+  $stmt->free_result();
+  $stmt->close();
+}
+
+
+function deleteStudent($post)
+{
+  global $con;
+  extract($post);
+  $stmt = $con->prepare("DELETE FROM users WHERE id = ?");
+  $stmt->bind_param('s', $student_id);
+  $stmt->execute();
+  $stmt->store_result();
+
+  if ($stmt->affected_rows > 0) {
+    header("location: viewStudents.php?success=1&message=Id: " . $student_id . " student deleted successfully");
+  } else {
+    header("location: viewStudents.php?success=0&message=$stmt->error");
   }
 
   $stmt->free_result();
@@ -364,9 +441,28 @@ function updateTeacher($post)
   $stmt->store_result();
 
   if ($stmt->affected_rows > 0) {
-    header("location: viewTeachers.php?update=1&message=Id: " . $teacher_id . " teacher updated successfully");
+    header("location: viewTeachers.php?success=1&message=Id: " . $teacher_id . " teacher updated successfully");
   } else {
-    header("location: viewTeachers.php?update=0&message=$stmt->error");
+    header("location: viewTeachers.php?success=0&message=Student not updated $stmt->error");
+  }
+
+  $stmt->free_result();
+  $stmt->close();
+}
+
+function updateStudent($post)
+{
+  global $con;
+  extract($post);
+  $stmt = $con->prepare("UPDATE users SET username = ?, phone = ?, email = ? WHERE id = ?");
+  $stmt->bind_param('ssss', $student_name, $student_phone, $student_email, $student_id);
+  $stmt->execute();
+  $stmt->store_result();
+
+  if ($stmt->affected_rows > 0) {
+    header("location: viewStudents.php?success=1&message=Id: " . $student_id . " Student updated successfully");
+  } else {
+    header("location: viewStudents.php?success=0&message=Student not updated $stmt->error");
   }
 
   $stmt->free_result();
@@ -386,7 +482,7 @@ function updateCourse($post)
   if ($stmt->affected_rows > 0) {
     header("location: viewCourses.php?update=1&message=Id: " . $course_id . " course updated successfully");
   } else {
-    header("location: viewCourses.php?update=0&message=$stmt->error");
+    header("location: viewCourses.php?update=0&message=Course not updated $stmt->error");
   }
 
   $stmt->free_result();

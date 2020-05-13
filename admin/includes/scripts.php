@@ -69,6 +69,71 @@
   </div>
 </div>
 
+<!-- Edit student modal -->
+<div class="modal fade" id="editStudent" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <form action="" method="post">
+        <div class="modal-header">
+          <h5 class="modal-title">Edit Student</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form class="" action="" method="post">
+            <div class="row">
+              <div class="form-group col-md-6">
+                <label>Name of Student</label>
+                <input type="text" name="student_name" id="student_name" class="form-control" placeholder="Student's name" required>
+              </div>
+              <div class="form-group col-md-6">
+                <label>Phone</label>
+                <input type="tel" name="student_phone" id="student_phone" class="form-control" placeholder="Example 254700123456" pattern="[0-9]{3}[0-9]{3}[0-9]{6}" required>
+            </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-md-12">
+                <label>Email</label>
+                <input type="email" name="student_email"  id="student_email" class="form-control" placeholder="Enter email address" required>
+              </div>
+            </div>
+          <input type="hidden" name="student_id" id="student_id" value="">
+        </div>
+        <div class="modal-footer">
+          <button type="submit" name="updateStudent" class="btn btn-success">Update</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Delete student modal -->
+<div class="modal fade" id="deleteStudentModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <form action="" method="post">
+        <div class="modal-header">
+          <h5 class="modal-title">Remove Student</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" name="student_id" id="student_id_delete" value="">
+          <p>Are you sure you want to remove <span id="sname"></span>?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" name="deleteStudent" class="btn btn-danger">Remove</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
 <!-- Edit course modal -->
 <div class="modal fade" id="editCourseModal" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
