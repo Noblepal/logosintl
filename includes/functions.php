@@ -83,6 +83,14 @@ function getTopCourses()
     return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
 }
 
+function getAllCourses()
+{
+    global $con;
+    $stmt = $con->prepare("SELECT * FROM courses");
+    $stmt->execute();
+    return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+}
+
 function closeSTMT($stmt)
 {
     $stmt->free_result();
