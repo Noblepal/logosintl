@@ -29,7 +29,7 @@ function loginUser($post)
             $_SESSION['name'] = $mName;
             $_SESSION['phone'] = $mPhone;
             $_SESSION['email'] = $mEmail;
-            $_SESSION['logged_in'] = false;
+            $_SESSION['logged_in'] = true;
             __redirect("index.php", "login", 1, "Login successful");
         } else {
             __redirect("index.php", "login", 0, "Incorrect password");
@@ -64,7 +64,7 @@ function registerUser($post)
             $_SESSION['name'] = $name;
             $_SESSION['phone'] = $phone;
             $_SESSION['email'] = $email;
-            $_SESSION['logged_in'] = true;
+            $_SESSION['logged_in'] = false;
             __redirect("index.php", "register", 1, "Registration successful. Logging you in...");
         } else {
             __redirect("index.php", "register", 0, "Failed to register, reason: " . $stmt->error);
