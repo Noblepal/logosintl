@@ -47,7 +47,7 @@ function createAdminUser($post)
   if (isUserExists($adminEmail)) {
     header('location: addAdmin.php?success=0&message=Email address already exists');
   } else {
-    $creator = $_SESSION['username'];
+    $creator = $_SESSION['name'];
     $stmt = $con->prepare("INSERT INTO admin (username, email, password, created_at, created_by) VALUES (?,?,?, now(),?)");
     $adminPass = password_hash($adminPass, PASSWORD_DEFAULT);
     $stmt->bind_param("ssss", $adminName, $adminEmail, $adminPass, $creator);
