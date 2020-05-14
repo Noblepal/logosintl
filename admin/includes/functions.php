@@ -6,8 +6,16 @@ session_start();
 $con = mysqli_connect('localhost', 'favoure1_favoure1', '6Ktx$hw41L*k', 'favoure1_logosintl');
 //$con = mysqli_connect('localhost', 'root', '', 'logosintl');
 
-if (!isset($_SESSION['logged_in'])) {
+if (isset($_SESSION['logged_in'])) {
+  if (!isset($_SESSION['isAdmin'])) {
 ?>
+    <script>
+      window.location.replace("404.php?success=0&message=You do not have permission to access this page");
+    </script>
+  <?php
+  }
+} else {
+  ?>
   <script>
     window.location.replace("login.php?logged_in=0&message=You must be logged in");
   </script>
