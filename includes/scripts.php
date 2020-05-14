@@ -20,9 +20,11 @@
 <script src="js/script.js"></script>
 <script>
     $(document).ready(function() {
-        $(".alert").hide();
-        $(".alert").fadeTo(2000, 500).slideUp(500, function() {
-            $(".alert").slideUp(500);
+        $(".dismiss_").hide();
+        $(".dismiss_").fadeTo(2000, 500).slideUp(500, function() {
+            $(".dismiss_").slideUp(500);
         });
+
+        $("#myToast").toast('show');
     });
 </script>

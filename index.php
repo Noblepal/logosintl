@@ -227,6 +227,8 @@ include './includes/head.php';
 
   <?php include './includes/scripts.php' ?>
 
+
+
 </body>
 
 </html>

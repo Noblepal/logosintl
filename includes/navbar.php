@@ -4,6 +4,9 @@
      <div class="top-header py-2 bg-white">
          <div class="container">
              <div class="row text-center justify-content-center">
+                 <div class="alert col-md-12 alert-warning fade show" role="alert">
+                     <strong>Info:</strong> Student platform is currently under maintenance
+                 </div>
 
                  <?php
                     if (isset($_GET['login'])) {
@@ -11,7 +14,7 @@
                         $message = $_GET['message'];
                         if ($code == 1) {
                     ?>
-                         <div class="alert col-md-6 alert-success alert-dismissible fade show" role="alert">
+                         <div class="alert dismiss_ col-md-6 alert-success alert-dismissible fade show" role="alert">
                              <strong><?php echo $message; ?></strong>
                              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                  <span aria-hidden="true">&times;</span>
@@ -20,7 +23,7 @@
                      <?php
                         } else if ($code == 0) {
                         ?>
-                         <div class="alert col-md-6 alert-danger alert-dismissible fade show" role="alert">
+                         <div class="alert dismiss_ col-md-6 alert-danger alert-dismissible fade show" role="alert">
                              <strong><?php echo $message; ?></strong>
                              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                  <span aria-hidden="true">&times;</span>
@@ -33,7 +36,7 @@
                         $message = $_GET['message'];
                         if ($code == 1) {
                         ?>
-                         <div class="alert col-md-6 alert-success alert-dismissible fade show" role="alert">
+                         <div class="alert dismiss_ col-md-6 alert-success alert-dismissible fade show" role="alert">
                              <strong><?php echo $message; ?></strong>
                              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                  <span aria-hidden="true">&times;</span>
@@ -47,7 +50,7 @@
                      <?php
                         } else if ($code == 0) {
                         ?>
-                         <div class="alert col-md-6 alert-danger alert-dismissible fade show" role="alert">
+                         <div class="alert dismiss_ col-md-6 alert-danger alert-dismissible fade show" role="alert">
                              <strong><?php echo $message; ?></strong>
                              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                  <span aria-hidden="true">&times;</span>
@@ -60,7 +63,7 @@
                         $message = $_GET['message'];
                         if ($code == 1) {
                         ?>
-                         <div class="alert col-md-6 alert-info alert-dismissible fade show" role="alert">
+                         <div class="alert dismiss_ col-md-6 alert-info alert-dismissible fade show" role="alert">
                              <strong><?php echo $message; ?></strong>
                              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                  <span aria-hidden="true">&times;</span>
@@ -122,7 +125,7 @@
                                 $isLoggedIn = $_SESSION['logged_in'];
                                 if ($isLoggedIn) {
                             ?>
-                            <!-- Added this comment -->
+                                 <!-- Added this comment -->
                                  <li class="nav-item">
                                      <a class="nav-link" href="#"><?php echo $_SESSION['name'] ?></a>
                                  </li>
