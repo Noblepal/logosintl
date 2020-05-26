@@ -411,7 +411,7 @@ function createTeacher($post)
       //header("location: addTeacher.php?success=0&message=Failed to upload image");
     }
   } else {
-    header("location: addTeacher.php?success=0&message=File is not an image. Allowed types: 'jpg', 'png', 'jpeg', 'gif', 'pdf'");
+    header("location: addTeacher.php?success=0&message=File is not an image. Allowed types: 'jpg', 'png', 'jpeg', 'gif'");
   }
 }
 

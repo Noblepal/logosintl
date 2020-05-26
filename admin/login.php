@@ -113,6 +113,6 @@ function loginAdmin($post){
                 </footer>
             </div> -->
         </div>
-        <?php include('scripts.php'); ?>
+        <?php include('./includes/scripts.php'); ?>
     </body>
 </html>
