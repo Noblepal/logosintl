@@ -10212,3 +10212,9 @@ body {
 .sb-sidenav-light .sb-sidenav-footer {
   background-color: #e9ecef;
 }
+
+
+/* Custom styles */
+.bg-purple{
+  background-color: rgb(168, 75, 255) !important;
+}

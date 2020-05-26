@@ -24,15 +24,15 @@ include("./includes/functions.php")
             $s = $_GET['success'];
             if ($s == 0) {
           ?>
-              <div class="alert alert-danger mt-3" role="alert">
-                <?php echo $_GET['message']; ?>
-              </div>
-            <?php
+          <div class="alert alert-danger mt-3" role="alert">
+            <?php echo $_GET['message']; ?>
+          </div>
+          <?php
             } else if ($s == 1) {
             ?>
-              <div class="alert alert-success mt-3" role="alert">
-                <?php echo $_GET['message']; ?>
-              </div>
+          <div class="alert alert-success mt-3" role="alert">
+            <?php echo $_GET['message']; ?>
+          </div>
           <?php
             }
           } ?>
@@ -61,6 +61,7 @@ include("./includes/functions.php")
               </div>
             </div>
           </div>
+        </div>
       </main>
       <?php include("./includes/footer.php"); ?>
     </div>

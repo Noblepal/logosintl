@@ -39,7 +39,7 @@ function loginAdmin($post){
 <!DOCTYPE html>
 <html lang="en">
     <?php include('./includes/head.php'); ?>
-    <body class="bg-primary">
+    <body class="bg-purple">
         <div id="layoutAuthentication">
             <div id="layoutAuthentication_content">
                 <main>
