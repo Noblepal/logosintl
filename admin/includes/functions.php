@@ -295,30 +295,46 @@ function createCourse($post)
   global $con;
   extract($post);
   $popular = $popular == "yes" ? $popular : "no";
-  $stmt = $con->prepare("INSERT INTO courses (title, type, course_description, teacher, duration, topics_num, popular, created_at) VALUES (?,?,?,?,?,?,?, now())");
-  $stmt->bind_param("sssssss", $title, $course_type, $course_description, $teacher, $course_duration, $course_num_topics, $popular);
-  $stmt->execute();
-  $stmt->store_result();
 
-  if ($stmt->affected_rows > 0) {
-    $stmt->free_result();
-    $stmt->close();
-    $stmt = $con->prepare("SELECT id FROM courses WHERE title = ?");
-    $stmt->bind_param("s", $title);
-    $stmt->execute();
-    $stmt->store_result();
-    $stmt->bind_result($course_id);
-    $stmt->fetch();
-    header("location: addCourse.php?success=1&message=Course added successfully");
-    //header("location: addCourse.php?success=1&message=Course added successfully");
+  $image = $_FILES['image']['name'];
+  $target = "../images/courses/";
+  $fileName = basename($image);
+  $targetFilePath = $target . $fileName;
+  $path_for_db = "./images/courses/" . $fileName;
+
+  $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
+  $allowTypes = array('jpg', 'png', 'jpeg', 'gif', 'pdf', 'svg');
+  if (in_array($fileType, $allowTypes)) {
+    if (move_uploaded_file($_FILES['image']['tmp_name'], $targetFilePath)) {
+
+      $stmt = $con->prepare("INSERT INTO courses (title, type, course_description, teacher, duration, topics_num, popular, image_url, created_at) VALUES (?,?,?,?,?,?,?,?, now())");
+      $stmt->bind_param("ssssssss", $title, $course_type, $course_description, $teacher, $course_duration, $course_num_topics, $path_for_db, $popular);
+      $stmt->execute();
+      $stmt->store_result();
+
+      if ($stmt->affected_rows > 0) {
+        $stmt->free_result();
+        $stmt->close();
+        $stmt = $con->prepare("SELECT id FROM courses WHERE title = ?");
+        $stmt->bind_param("s", $title);
+        $stmt->execute();
+        $stmt->store_result();
+        $stmt->bind_result($course_id);
+        $stmt->fetch();
+        header("location: addCourse.php?success=1&message=Course added successfully");
+        //header("location: addCourse.php?success=1&message=Course added successfully");
+      } else {
+        header("location: addCourse.php?success=0&message=$stmt->error");
+        //Failed to insert
+      }
+    } else {
+      echo "error";
+      //header("location: addCourse.php?success=0&message=Failed to upload image");
+    }
   } else {
-    header("location: addCourse.php?success=0&message=$stmt->error");
-    //Failed to insert
+    header("location: addCourse.php?success=0&message=File: $targetFilePath is not an image. Allowed types: 'jpg', 'png', 'jpeg', 'gif', 'pdf', 'svg'");
   }
-
-  $stmt->close();
 }
-
 function createTopic($post, $status)
 {
   global $con;
