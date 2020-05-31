@@ -309,7 +309,7 @@ function createCourse($post)
     if (move_uploaded_file($_FILES['image']['tmp_name'], $targetFilePath)) { */
 
       $stmt = $con->prepare("INSERT INTO courses (title, type, course_description, teacher, duration, topics_num, popular, image_url, created_at) VALUES (?,?,?,?,?,?,?,?, now())");
-      $stmt->bind_param("ssssssss", $title, $course_type, $course_description, $teacher, $course_duration, $course_num_topics, $path_for_db, $popular);
+      $stmt->bind_param("ssssssss", $title, $course_type, $course_description, $teacher, $course_duration, $course_num_topics, $popular, $path_for_db );
       $stmt->execute();
       $stmt->store_result();
 
