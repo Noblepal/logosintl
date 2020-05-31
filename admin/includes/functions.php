@@ -295,7 +295,7 @@ function createCourse($post)
   global $con;
   extract($post);
   $popular = $popular == "yes" ? $popular : "no";
-  $path_for_db = "";
+  $path_for_db = "_image";
 
   /* $image = $_FILES['image']['name'];
   $target = "../images/courses/";
@@ -308,8 +308,9 @@ function createCourse($post)
   if (in_array($fileType, $allowTypes)) {
     if (move_uploaded_file($_FILES['image']['tmp_name'], $targetFilePath)) { */
 
-      $stmt = $con->prepare("INSERT INTO courses (title, type, course_description, teacher, duration, topics_num, popular, image_url, created_at) VALUES (?,?,?,?,?,?,?,?, now())");
-      $stmt->bind_param("ssssssss", $title, $course_type, $course_description, $teacher, $course_duration, $course_num_topics, $popular, $path_for_db );
+      $sql = "INSERT INTO `courses`(`title`, `course_description`, `type`, `teacher`, `duration`, `topics_num`, `popular`, `image_url`, `created_at`) VALUES (?,?,?,?,?,?,?,?,now())";
+      $stmt = $con->prepare("INSERT INTO `courses`(`title`, `course_description`, `type`, `teacher`, `duration`, `topics_num`, `popular`, `image_url`, `created_at`) VALUES (?,?,?,?,?,?,?,?,now())");
+      $stmt->bind_param("ssssssss", $title, $course_type, $course_description, $teacher, $course_duration, $course_num_topics, $popular, $path_for_db);
       $stmt->execute();
       $stmt->store_result();
 
