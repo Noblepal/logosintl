@@ -295,6 +295,7 @@ function createCourse($post)
   global $con;
   extract($post);
   $popular = $popular == "yes" ? $popular : "no";
+  $path_for_db = "";
 
   /* $image = $_FILES['image']['name'];
   $target = "../images/courses/";
