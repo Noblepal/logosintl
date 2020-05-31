@@ -295,9 +295,9 @@ function createCourse($post)
   global $con;
   extract($post);
   $popular = $popular == "yes" ? $popular : "no";
-  $path_for_db = "_image";
+  //$path_for_db = "_image";
 
-  /* $image = $_FILES['image']['name'];
+  $image = $_FILES['image']['name'];
   $target = "../images/courses/";
   $fileName = basename($image);
   $targetFilePath = $target . $fileName;
@@ -306,7 +306,7 @@ function createCourse($post)
   $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
   $allowTypes = array('jpg', 'png', 'jpeg', 'gif', 'svg');
   if (in_array($fileType, $allowTypes)) {
-    if (move_uploaded_file($_FILES['image']['tmp_name'], $targetFilePath)) { */
+    if (move_uploaded_file($_FILES['image']['tmp_name'], $targetFilePath)) {
 
       $sql = "INSERT INTO `courses`(`title`, `course_description`, `type`, `teacher`, `duration`, `topics_num`, `popular`, `image_url`, `created_at`) VALUES (?,?,?,?,?,?,?,?,now())";
       $stmt = $con->prepare("INSERT INTO `courses`(`title`, `course_description`, `type`, `teacher`, `duration`, `topics_num`, `popular`, `image_url`, `created_at`) VALUES (?,?,?,?,?,?,?,?,now())");
@@ -329,13 +329,13 @@ function createCourse($post)
         header("location: addCourse.php?success=0&message=$stmt->error");
         //Failed to insert
       }
-   /*  } else {
+    } else {
       echo "error";
       //header("location: addCourse.php?success=0&message=Failed to upload image");
     }
   } else {
     header("location: addCourse.php?success=0&message=File is not an image. Allowed types: 'jpg', 'png', 'jpeg', 'gif', 'svg'");
-  } */
+  }
 }
 function createTopic($post, $status)
 {

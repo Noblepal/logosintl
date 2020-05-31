@@ -91,10 +91,10 @@ include("./includes/functions.php")
             </div>
 
             <div class="row">
-              <!-- <div class="form-group col-md-6">
+              <div class="form-group col-md-6">
                 <label>Course Picture</label>
                 <input type="file" name="image" class="form-control" accept="image/*" required>
-              </div> -->
+              </div>
 
               <div class="form-check my-3">
                 <input type="checkbox" name="popular" value="yes" class="form-check-input" id="exampleCheck1">
